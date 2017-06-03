@@ -7,3 +7,6 @@
 /pkg/
 /spec/reports/
 /tmp/
+**/spike.rb
+**/.DS_Store
+html/
