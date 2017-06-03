@@ -9,13 +9,19 @@ end
 
 task :default => :test
 
-desc "Compile and view the slim templates"
+TEMPLATE_PATH = "lib/search_engine/views/search.slim"
+HTML_PATH     = "lib/search_engine/public/html/search.html"
+
+desc "Compile the slim templates into html"
 task :compile do
-  html = `slimrb -p lib/search_engine/views/search.slim`
-  file_path = "html/search.html"
-  File.delete file_path if File.exist? file_path
-  File.open file_path, "w" do |f|
+  html = `slimrb -p #{TEMPLATE_PATH}`
+  File.delete HTML_PATH if File.exist? HTML_PATH
+  File.open HTML_PATH, "w" do |f|
     f.puts html
   end
-  `open #{file_path}` # opens html file in browser
+end
+
+desc "Compile and view slim templates html in a browser"
+task :view => :compile do
+  `open #{HTML_PATH}` # opens html file in browser
 end
