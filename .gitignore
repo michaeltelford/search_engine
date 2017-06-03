@@ -7,6 +7,6 @@
 /pkg/
 /spec/reports/
 /tmp/
+.byebug_history
 **/spike.rb
 **/.DS_Store
-html/
