@@ -1,30 +1,18 @@
-doctype html
-html
-  head
-    title Search Engine
-    meta name="keywords" content=""
-    meta name="author" content="Michael Telford"
+#title
+  h1 Search Engine
 
-  body
-    #title
-      h1 Search Engine
+#search
+  input type="text" name="query"
+  input type="submit" value="Search"
 
-    #search
-      input type="text" name="query"
-      input type="submit" value="Search"
-
-    #results
-      #result1
-        h3 Sydney
-        p Beautiful part of Straya...
-        p http://www.wollongong.co.au
-        hr
-      #result2
-        h3 Wollongong
-        p Another beautiful part of Oz...
-        p http://www.sydney.co.au
-        hr
-
-    #footer
-      p Developed by Michael Telford using Ruby.
-      | Copyright © #{Time.new.year} Michael Telford
+#results
+  #result1
+    h3 Sydney
+    p Beautiful part of Straya...
+    p http://www.wollongong.co.au
+    hr
+  #result2
+    h3 Wollongong
+    p Another beautiful part of Oz...
+    p http://www.sydney.co.au
+    hr
