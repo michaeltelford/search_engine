@@ -22,11 +22,11 @@ Or install it yourself as:
 
 To run the application server, use the command:
 
-    $ rackup
+    $ bundle exec rake serve
 
-See the rake tasks for more usage with:
+See the rake tasks for more usage commands with:
 
-    $ rake -T
+    $ bundle exec rake -T
 
 ## Development
 

@@ -1,9 +1,15 @@
 doctype html
-html
+html lang="en"
   head
-    title Search Engine
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+
     meta name="keywords" content="Search, Engine, Search Engine"
     meta name="author" content="Michael Telford"
+    title Search Engine
+
+    == stylesheet_tag 'app', :expand => settings.development?
 
   body
     #content
@@ -11,3 +17,5 @@ html
 
     #footer
       == slim :footer
+
+    == javascript_tag 'app', :expand => settings.development?

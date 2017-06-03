@@ -1,5 +1,6 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'search_engine'
+ENV['RACK_ENV'] = 'test'
+
+require_relative '../../lib/search_engine'
 
 require 'minitest/autorun'
 require 'rack/test'
@@ -12,7 +13,7 @@ end
 
 # required by rack-test
 def app
-  Sinatra::Application
+  SearchEngine::App.new
 end
 
 # helper methods for all tests go below...
@@ -23,4 +24,9 @@ end
 
 def body
   last_response.body
+end
+
+def refute_empty_response
+  assert_equal 200, status
+  refute_empty body
 end

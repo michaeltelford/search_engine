@@ -37,8 +37,17 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_development_dependency "byebug"
 
+  spec.add_runtime_dependency "rack"
+  spec.add_runtime_dependency "rack-protection"
   spec.add_runtime_dependency "wgit"
   spec.add_runtime_dependency "thin"
   spec.add_runtime_dependency "sinatra"
+  spec.add_runtime_dependency "sinatra-contrib"
   spec.add_runtime_dependency "slim"
+  spec.add_runtime_dependency "sprockets"
+  spec.add_runtime_dependency "sprockets-helpers"
+  spec.add_runtime_dependency "uglifier"
+  spec.add_runtime_dependency "execjs"
+  spec.add_runtime_dependency "coffee-script"
+  spec.add_runtime_dependency "sass"
 end

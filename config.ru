@@ -1,3 +1,3 @@
-require_relative 'lib/search_engine/app'
+require_relative 'lib/search_engine/search_engine'
 
-run Sinatra::Application
+run SearchEngine::App.new
