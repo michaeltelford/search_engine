@@ -1,10 +1,10 @@
 ENV['RACK_ENV'] = 'test'
 
-require_relative '../../lib/search_engine'
-
 require 'minitest/autorun'
 require 'rack/test'
 require 'byebug'
+
+require_relative '../lib/search_engine'
 
 # require the rack-test methods for all test files
 class Minitest::Test

@@ -34,6 +34,8 @@ class AppTest < Minitest::Test
     flunk "TODO: add search result assertions"
   end
 
+private
+
   def assert_search_response
     refute_empty_response
     assert body.include? "Search Engine"

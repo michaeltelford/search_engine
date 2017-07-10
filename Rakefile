@@ -14,12 +14,12 @@ task :default => :test
 
 desc "Start the application on port #{DEV_PORT}"
 task :serve do
-  system "bundle exec rackup -p #{DEV_PORT}"
+  system "RACK_ENV=development bundle exec rackup -p #{DEV_PORT}"
 end
 
 desc "Start the application in production on port #{PROD_PORT}"
 task :serve! do
-  system "bundle exec rackup -p #{PROD_PORT}"
+  system "RACK_ENV=production bundle exec rackup -p #{PROD_PORT}"
 end
 
 desc "Open the app in a browser"

@@ -2,9 +2,18 @@
 
 Search engine front end site developed using Ruby, Sinatra (web framework), Thin (templating engine) and the '[wgit](https://github.com/michaeltelford/wgit)' gem (search engine logic).
 
+## Versioning
+
+- `ruby-2.4.0`
+- `jquery-3.2.1`
+- `tether-1.3.3`
+- `bootstrap-4.0.0`
+
+See the `Gemfile` and `Gemfile.lock` files for gem versioning information.
+
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application's `Gemfile`:
 
 ```ruby
 gem 'search_engine'
@@ -20,11 +29,11 @@ Or install it yourself as:
 
 ## Usage
 
-To run the application server, use the command:
+Run the application server with:
 
     $ bundle exec rake serve
 
-See the rake tasks for more usage commands with:
+See all the rake tasks with:
 
     $ bundle exec rake -T
 
