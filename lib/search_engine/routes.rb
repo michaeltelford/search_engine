@@ -19,7 +19,9 @@ module SearchEngine
     end
 
     get '/search' do
-      slim :search, layout: true
+      slim :search, layout: true, locals: {
+        :development => settings.development?
+      }
     end
 
     get '/healthcheck' do

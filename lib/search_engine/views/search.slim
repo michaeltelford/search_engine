@@ -1,23 +1,25 @@
-#title.row
+.row
   .col-md-12
-      h1 Search Engine
-
-#search.row
-  .col-md-2
-    input type="text" name="query"
-  .col-md-2
-    input type="submit" value="Search"
+    p#title.h2 Search Engine
+  
+form#search.row
+  .col-lg-12
+    .input-group.input-group-md
+      label.sr-only for="q" Enter a search query
+      input#q.form-control.input-md type="text" name="q"
+      span.input-group-btn
+        button#submit.btn.btn-primary.btn-md type="submit" Search
 
 #results
   #result1.row
     .col-md-12
-      h3 Sydney
+      a.h5 href="http://www.wollongong.com.au" Wollongong
       p Beautiful part of Straya...
-      p http://www.wollongong.co.au
+      small http://www.wollongong.com.au
       hr
   #result2.row
     .col-md-12
-      h3 Wollongong
+      a.h5 href="http://www.sydney.com.au" Sydney
       p Another beautiful part of Oz...
-      p http://www.sydney.co.au
+      small http://www.sydney.com.au
       hr

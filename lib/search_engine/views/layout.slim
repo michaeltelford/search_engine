@@ -9,7 +9,7 @@ html lang="en"
     meta name="author" content="Michael Telford"
     title Search Engine
 
-    == stylesheet_tag 'app', :expand => settings.development?
+    == stylesheet_tag 'app', :expand => development
 
   body
     .container-fluid
@@ -19,4 +19,4 @@ html lang="en"
       #footer
         == slim :footer
 
-    == javascript_tag 'app', :expand => settings.development?
+    == javascript_tag 'app', :expand => development

@@ -1,0 +1,17 @@
+// TODO: Move to a global var file and import
+$q-width: 30em;
+
+#title {
+  margin: {
+    top: 1em;
+    bottom: 0.8em;
+  }
+}
+
+#q {
+  max-width: $q-width;
+}
+
+#results {
+  margin-top: 2em;
+}

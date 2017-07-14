@@ -4,7 +4,7 @@ require 'sprockets-helpers'
 class AssetsTest < Minitest::Test
   include Sprockets::Helpers
 
-  # asset helper tests
+  # asset helper method tests
 
   def test_asset_stylesheets_helper
     assert respond_to? :stylesheet_tag
@@ -60,6 +60,11 @@ class AssetsTest < Minitest::Test
 
   def test_asset_main_css
     get '/assets/main.css'
+    assert last_response.ok?
+  end
+
+  def test_asset_search_css
+    get '/assets/search.css'
     refute_empty_response
   end
 end
