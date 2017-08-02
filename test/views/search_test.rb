@@ -1,37 +1,73 @@
 require 'nokogiri'
-require 'wgit'
 require 'test_helper'
+require_relative '../factories/html_document'
 
 class SearchViewTest < Minitest::Test
-  TEMPLATE = "search"
-  RESULTS_CSS_SELECTOR = "#results > div.row"
+  TEMPLATE       = "search"
+  CSS_QUERY      = "#q"
+  CSS_RESULTS    = "#results > div.row"
+  CSS_NO_RESULTS = "#no-results"
 
   def test_no_results
-    results = []
-    doc = search_doc results
-    results = doc.css RESULTS_CSS_SELECTOR
+    q = ""
+    mocks = []
+
+    doc = search_template q: q, results: mocks
+    results = doc.css CSS_RESULTS
+
     assert_equal 0, results.size
+    assert_q q, doc
+    assert_equal(
+      "There are no search results, try changing the search query.",
+      doc.css(CSS_NO_RESULTS).text
+    )
   end
 
   def test_one_result
-    results = [Wgit::Document]
-    doc = search_doc results
-    results = doc.css RESULTS_CSS_SELECTOR
-    assert_equal 0, results.size
+    q = "Everest"
+    mocks = Array.new 1, Document.new
+
+    doc = search_template q: q, results: mocks
+    results = doc.css CSS_RESULTS
+
+    assert_equal 1, results.size
+    assert_q q, doc
+    assert_result mocks.first, results.first
   end
 
   def test_several_results
-    pass
+    num_results = 3
+    q = "Ama Dablam"
+    mocks = Array.new(num_results) { Document.new }
+
+    doc = search_template q: q, results: mocks
+    results = doc.css CSS_RESULTS
+
+    assert_equal num_results, results.size
+    assert_q q, doc
+    for i in 0..(num_results - 1)
+      assert_result mocks[i], results[i]
+    end
   end
 
 private
 
   # Sets up an env context to render the template with and returns a
   # Nokogiri::Document object from the resulting HTML
-  def search_doc(results)
-    env = OpenStruct.new results: results
+  def search_template(env_hash)
+    env = OpenStruct.new env_hash
     html = render_template TEMPLATE, env
     refute_empty html
     Nokogiri::HTML html
+  end
+
+  def assert_q(expected, actual)
+    assert_equal expected, actual.css(CSS_QUERY).first[:value]
+  end
+
+  def assert_result(expected, actual)
+    assert_equal expected.title, actual.css("a").text
+    assert_equal expected.text, actual.css("p").text
+    assert_equal expected.url, actual.css("small").text
   end
 end

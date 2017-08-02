@@ -1,6 +1,9 @@
+require_relative '../../test/factories/html_document'
+
 module SearchEngine
   class App < Sinatra::Base
     # place any routes below...
+
     not_found do
       "Not found, sorry!"
     end
@@ -19,13 +22,19 @@ module SearchEngine
     end
 
     get '/search' do
-      slim :search, layout: true, locals: {
-        :development => settings.development?
-      }
-    end
+      q = params['q'] ||= ""
+      results = []
 
-    get '/healthcheck' do
-      200
+      if not q.empty?
+        # TODO: Get results from 'wgit' gem using q
+        results = Array.new(10) { Document.new }
+      end
+
+      slim :search, layout: true, locals: {
+        development: settings.development?,
+        q: q,
+        results: results
+      }
     end
   end
 end

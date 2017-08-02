@@ -6,20 +6,18 @@ form#search.row
   .col-lg-12
     .input-group.input-group-md
       label.sr-only for="q" Enter a search query
-      input#q.form-control.input-md type="text" name="q"
+      input#q.form-control.input-md type="text" name="q" value="#{q}"
       span.input-group-btn
         button#submit.btn.btn-primary.btn-md type="submit" Search
 
-#results
-  #result1.row
-    .col-md-12
-      a.h5 href="http://www.wollongong.com.au" Wollongong
-      p Beautiful part of Straya...
-      small http://www.wollongong.com.au
-      hr
-  #result2.row
-    .col-md-12
-      a.h5 href="http://www.sydney.com.au" Sydney
-      p Another beautiful part of Oz...
-      small http://www.sydney.com.au
-      hr
+- if not results.empty?
+  #results
+    - results.each_with_index do |result, i|
+      .row id="result_#{i}"
+        .col-md-12
+          a.h5 href="#{result.url}" #{result.title}
+          p #{result.text}
+          small #{result.url}
+          hr
+- else
+  p#no-results There are no search results, try changing the search query.

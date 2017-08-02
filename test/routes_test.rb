@@ -7,11 +7,6 @@ class RoutesTest < Minitest::Test
     assert_equal "Not found, sorry!", body
   end
 
-  def test_get_healthcheck
-    get '/healthcheck'
-    assert last_response.ok?
-  end
-
   def test_index
     get '/'
     assert_equal 302, status
