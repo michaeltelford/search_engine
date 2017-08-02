@@ -10,14 +10,17 @@ form#search.row
       span.input-group-btn
         button#submit.btn.btn-primary.btn-md type="submit" Search
 
-- if not results.empty?
-  #results
-    - results.each_with_index do |result, i|
-      .row id="result_#{i}"
-        .col-md-12
-          a.h5 href="#{result.url}" #{result.title}
-          p #{result.text}
-          small #{result.url}
-          hr
+- if not q.empty?
+  - if not results.empty?
+    #results
+      - results.each_with_index do |result, i|
+        .row id="result_#{i}"
+          .col-md-12
+            a.h5 href="#{result.url}" #{result.title}
+            p #{result.text}
+            small #{result.url}
+            hr
+  - else
+    p#no-results There are no search results, try changing your query.
 - else
-  p#no-results There are no search results, try changing the search query.
+  p#no-search Enter a search query...

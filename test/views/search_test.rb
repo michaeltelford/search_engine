@@ -5,10 +5,11 @@ require_relative '../factories/html_document'
 class SearchViewTest < Minitest::Test
   TEMPLATE       = "search"
   CSS_QUERY      = "#q"
-  CSS_RESULTS    = "#results > div.row"
+  CSS_NO_SEARCH  = "#no-search"
   CSS_NO_RESULTS = "#no-results"
+  CSS_RESULTS    = "#results > div.row"
 
-  def test_no_results
+  def test_no_search
     q = ""
     mocks = []
 
@@ -18,7 +19,22 @@ class SearchViewTest < Minitest::Test
     assert_equal 0, results.size
     assert_q q, doc
     assert_equal(
-      "There are no search results, try changing the search query.",
+      "Enter a search query...",
+      doc.css(CSS_NO_SEARCH).text
+    )
+  end
+
+  def test_no_results
+    q = "Jibberish"
+    mocks = []
+
+    doc = search_template q: q, results: mocks
+    results = doc.css CSS_RESULTS
+
+    assert_equal 0, results.size
+    assert_q q, doc
+    assert_equal(
+      "There are no search results, try changing your query.",
       doc.css(CSS_NO_RESULTS).text
     )
   end
