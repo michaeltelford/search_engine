@@ -54,16 +54,14 @@ class SearchViewTest < Minitest::Test
   def test_several_results
     num_results = 3
     q = "Ama Dablam"
-    mocks = Array.new(num_results) { Document.new }
 
+    mocks = Array.new(num_results) { Document.new }
     doc = search_template q: q, results: mocks
     results = doc.css CSS_RESULTS
 
     assert_equal num_results, results.size
     assert_q q, doc
-    for i in 0..(num_results - 1)
-      assert_result mocks[i], results[i]
-    end
+    num_results.times { |i| assert_result mocks[i], results[i] }
   end
 
 private
