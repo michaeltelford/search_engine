@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "rack-test"
-  spec.add_development_dependency "faker"
+  spec.add_runtime_dependency "faker" # TODO: change to dev dep
   spec.add_development_dependency "yard"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "byebug"

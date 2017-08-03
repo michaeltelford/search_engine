@@ -24,6 +24,11 @@ task serve!: :dotenv do
   system "RACK_ENV=production bundle exec rackup -p #{port}"
 end
 
+desc "Start the application using the 'heroku local' command"
+task :heroku do
+  system "heroku local"
+end
+
 desc "Open the app in a browser"
 task :open do
   puts "You may need to refresh the webpage to see the app..."
