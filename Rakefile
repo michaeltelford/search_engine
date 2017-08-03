@@ -1,8 +1,9 @@
-require "bundler/gem_tasks"
-require "rake/testtask"
+require 'bundler/gem_tasks'
+require 'dotenv/tasks'
+require 'rake/testtask'
 
-DEV_PORT  = 8080
-PROD_PORT = 80
+DEV_PORT          = 8080
+DEFAULT_PROD_PORT = 80
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
@@ -17,9 +18,10 @@ task :serve do
   system "RACK_ENV=development bundle exec rackup -p #{DEV_PORT}"
 end
 
-desc "Start the application in production on port #{PROD_PORT}"
-task :serve! do
-  system "RACK_ENV=production bundle exec rackup -p #{PROD_PORT}"
+desc "Start the application in production on port ENV['PORT'] || #{DEFAULT_PROD_PORT}"
+task serve!: :dotenv do
+  port = ENV['PORT'] || DEFAULT_PROD_PORT
+  system "RACK_ENV=production bundle exec rackup -p #{port}"
 end
 
 desc "Open the app in a browser"

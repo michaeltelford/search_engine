@@ -1,3 +1,4 @@
+require 'dotenv'
 require 'thin'
 require 'sinatra/base'
 require 'slim'
@@ -9,9 +10,11 @@ require 'coffee-script'
 require 'execjs'
 require_relative 'helpers'
 
+# place any initialisation/configuration code in this file
+# the routes are required (loaded) at the bottom of this file
 module SearchEngine
   class App < Sinatra::Base
-    # place any initialisation/configuration code below...
+    Dotenv.load
     require 'byebug' unless production?
 
     configure :development do
