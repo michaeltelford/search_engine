@@ -2,10 +2,12 @@ PATH
   remote: .
   specs:
     search_engine (0.1.0)
+      bundler (~> 1.14)
       coffee-script
       execjs
       rack
       rack-protection
+      rake (~> 10.0)
       sass
       sinatra
       sinatra-contrib
@@ -95,14 +97,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.14)
   byebug
   faker
   minitest (~> 5.0)
   nokogiri
   pry
   rack-test
-  rake (~> 10.0)
   search_engine!
   yard
 
