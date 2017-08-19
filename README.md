@@ -5,11 +5,15 @@ Search engine front end site developed using Ruby, Sinatra (web framework), Thin
 ## Versioning
 
 - `ruby-2.4.0`
+
+### Assets
+
 - `jquery-3.2.1`
 - `tether-1.3.3`
-- `bootstrap-4.0.0`
+- `bootstrap-3.3.7`
+- `font-awesome-4.7.0`
 
-See the `Gemfile` and `Gemfile.lock` files for gem versioning information.
+See the `Gemfile` and `Gemfile.lock` files for further gem versioning information.
 
 ## Installation
 
