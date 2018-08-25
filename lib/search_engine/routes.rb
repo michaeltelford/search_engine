@@ -22,7 +22,7 @@ module SearchEngine
     end
 
     get '/search' do
-      q = params['q'] ||= ""
+      q = params['q'] || ""
       results = []
 
       if not q.empty?
