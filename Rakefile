@@ -5,15 +5,20 @@ require 'rake/testtask'
 DEV_PORT          = 8080
 DEFAULT_PROD_PORT = 80
 
+task :default => :help
+
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
   t.libs << "lib"
   t.test_files = FileList['test/**/*_test.rb']
 end
 
-task :default => :test
+desc "Prints help text"
+task :help do
+  system "bundle exec rake -D"
+end
 
-desc "Start the application on port #{DEV_PORT}"
+desc "Start the application in development on port #{DEV_PORT}"
 task :serve do
   system "RACK_ENV=development bundle exec rackup -p #{DEV_PORT}"
 end
