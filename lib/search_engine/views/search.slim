@@ -1,27 +1,24 @@
-.row
-  .col-md-12
-    p#title.h2 Search Engine
-  
-form#search.row
-  .col-lg-12
-    .input-group.input-group-md
-      label.sr-only for="q" Enter a search query
-      input#q.form-control.input-md type="text" name="q" value="#{q}"
-      span.input-group-btn
-        button#submit.btn.btn-primary.btn-md type="submit"
+#content.w3-container
+  form#search
+    .w3-cell-row
+      .w3-cell
+        label.sr-only for="q" Enter a search query
+        input#q.w3-input.w3-white.w3-border type="text" name="q" value="#{q}"
+      .w3-cell
+        button#submit.w3-button.w3-white.w3-border type="submit"
           i class="fa fa-search fa-lg" aria-hidden="true"
 
-- if not q.empty?
-  - if not results.empty?
-    #results
-      - results.each_with_index do |result, i|
-        .row id="result_#{i}"
-          .col-md-12
-            a.h5 href="#{result.url}" #{result.title}
-            p #{result.text}
-            small #{result.url}
-            hr
-  - else
-    p#no-results There are no search results, try changing your query.
-- else
-  p#no-search Enter a search query...
+  article
+    - if not q.empty?
+      - if not results.empty?
+        #results
+          - results.each_with_index do |result, i|
+            .row id="result_#{i}"
+              a#result_title.w3-large href="#{result.url}" #{result.title}
+              p#result_text #{result.text}
+              small#result_url #{result.url}
+              hr
+      - else
+        p#no-results There are no search results, try changing your query.
+    - else
+      p#no-search Enter a search query...

@@ -7,16 +7,16 @@ html lang="en"
 
     meta name="keywords" content="Search Engine, Search, Engine"
     meta name="author" content="Michael Telford"
+    
     title Search Engine
 
     == stylesheet_tag 'app', :expand => development
 
   body
-    .container-fluid
-      #content
-        == yield
+    == slim :header
 
-      #footer
-        == slim :footer
+    == yield
+
+    == slim :footer
 
     == javascript_tag 'app', :expand => development

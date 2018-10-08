@@ -1,17 +1,23 @@
-// TODO: Move to a global var file and import
-$q-width: 30em;
+// TODO: Move to a global var file and import.
+$q-width: 40em;
 
 #title {
   margin: {
     top: 1em;
-    bottom: 0.8em;
+    bottom: 0.6em;
   }
 }
 
-#q {
-  max-width: $q-width;
+form#search {
+  max: {
+    width: $q-width;
+  }
 }
 
-#no-search, #no-results, #results {
-  margin-top: 2em;
+#content {
+  article {
+    margin: {
+      top: 2em;
+    }
+  }
 }
