@@ -26,8 +26,11 @@ module SearchEngine
       results = []
 
       if not q.empty?
-        # TODO: Get results from 'wgit' gem using q
-        results = Array.new(10) { Document.new }
+        if settings.production?
+          # TODO: get results from 'wgit' gem using q
+        else # use mock data for test and dev
+          results = Array.new(10) { Document.new }
+        end
       end
 
       slim :search, layout: true, locals: {

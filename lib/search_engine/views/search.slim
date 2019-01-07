@@ -15,11 +15,13 @@ form#search.row
   - if not results.empty?
     #results
       - results.each_with_index do |result, i|
-        .row id="result_#{i}"
+        .row id="result_#{i + 1}"
           .col-md-12
-            a.h5 href="#{result.url}" #{result.title}
-            p #{result.text}
-            small #{result.url}
+            a.title.h5 href="#{result.url}" #{result.title}
+            br
+            small.keywords #{result.keywords[0..5].join(", ")}
+            p.text #{result.text}
+            small.url #{result.url}
             hr
   - else
     p#no-results There are no search results, try changing your query.
