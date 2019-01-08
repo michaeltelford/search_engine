@@ -20,7 +20,7 @@ form#search.row
             a.title.h5 href="#{result.url}" #{result.title || "Untitled Webpage"}
             - if not result.keywords.nil?
               br
-              small.keywords #{result.keywords[0..5].join(", ")}
+              small.keywords #{result.keywords[0..4].join(", ")}
             p.text #{result.text.first}
             small.url #{result.url}
             hr
