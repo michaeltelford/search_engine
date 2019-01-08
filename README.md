@@ -4,7 +4,7 @@ Search engine front end site developed using Ruby, Sinatra (web framework), Thin
 
 ## Versioning
 
-- `ruby-2.4.0`
+- `ruby-2.5.3`
 
 ### Assets
 
