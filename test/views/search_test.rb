@@ -82,7 +82,7 @@ private
   def assert_result(expected, actual)
     assert_equal expected.title, actual.css(".title").first.text
     assert_equal expected.keywords, actual.css(".keywords").first.text.split(",").map(&:strip)
-    assert_equal expected.text, actual.css(".text").first.text
+    assert_equal expected.text.first, actual.css(".text").first.text
     assert_equal expected.url, actual.css(".url").first.text
   end
 end

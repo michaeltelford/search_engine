@@ -1,5 +1,3 @@
-require_relative '../../test/factories/html_document'
-
 module SearchEngine
   class App < Sinatra::Base
     # place any routes below...
@@ -26,8 +24,11 @@ module SearchEngine
       results = []
 
       if not q.empty?
+        q.strip!
+        
         if settings.production?
-          # TODO: get results from 'wgit' gem using q
+          results = settings.db.search(q, false, 10)
+          results.each { |doc| doc.search!(q) }
         else # use mock data for test and dev
           results = Array.new(10) { Document.new }
         end
@@ -36,7 +37,7 @@ module SearchEngine
       slim :search, layout: true, locals: {
         development: settings.development?,
         q: q,
-        results: results
+        results: results,
       }
     end
   end

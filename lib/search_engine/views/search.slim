@@ -17,10 +17,11 @@ form#search.row
       - results.each_with_index do |result, i|
         .row id="result_#{i + 1}"
           .col-md-12
-            a.title.h5 href="#{result.url}" #{result.title}
-            br
-            small.keywords #{result.keywords[0..5].join(", ")}
-            p.text #{result.text}
+            a.title.h5 href="#{result.url}" #{result.title || "Untitled Webpage"}
+            - if not result.keywords.nil?
+              br
+              small.keywords #{result.keywords[0..5].join(", ")}
+            p.text #{result.text.first}
             small.url #{result.url}
             hr
   - else

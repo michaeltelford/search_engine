@@ -7,7 +7,7 @@ class Document
   def initialize
     @title    = Faker::Commerce.unique.product_name
     @keywords = Faker::Lorem.unique.words(5)
-    @text     = Faker::Hacker.unique.say_something_smart[0..80].strip
+    @text     = [Faker::Hacker.unique.say_something_smart[0..80].strip]
     @url      = Faker::Internet.unique.url
   end
 end

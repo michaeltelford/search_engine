@@ -8,18 +8,30 @@ require 'uglifier'
 require 'sass'
 require 'coffee-script'
 require 'execjs'
+require 'wgit'
 require_relative 'helpers'
 
 # place any initialisation/configuration code in this file
 # the routes are required (loaded) at the bottom of this file
 module SearchEngine
   class App < Sinatra::Base
+    puts "Running in #{environment} mode."
     Dotenv.load
-    require 'byebug' unless production?
 
     configure :development do
       require "sinatra/reloader"
       register Sinatra::Reloader
+    end
+
+    configure :production do
+      Wgit.set_connection_details_from_env
+      set :db, Wgit::Database.new
+      puts "Connected to the database successfully."
+    end
+
+    configure :development, :test do
+      require 'byebug'
+      require_relative '../../test/factories/html_document'
     end
 
     configure :development, :production do
