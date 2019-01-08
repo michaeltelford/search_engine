@@ -1,4 +1,5 @@
-// TODO: Move to a global var file and import
+// Note: In future, if the search box is ever used on other pages then
+// this variable should be moved to main.scss and imported.
 $q-width: 30em;
 
 #title {
@@ -13,5 +14,13 @@ $q-width: 30em;
 }
 
 #no-search, #no-results, #results {
-  margin-top: 2em;
+  margin: {
+    top: 2em;
+  }
+}
+
+#results .text {
+  margin: {
+    bottom: 0em;
+  }
 }
