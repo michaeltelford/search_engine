@@ -4,7 +4,7 @@ require 'sprockets-helpers'
 class AssetsTest < Minitest::Test
   include Sprockets::Helpers
 
-  # asset helper method tests
+  # Asset helper method tests.
 
   def test_asset_stylesheets_helper
     assert respond_to? :stylesheet_tag
@@ -24,7 +24,7 @@ class AssetsTest < Minitest::Test
     flunk "image_path helper doesnt exist"
   end
 
-  # asset route JS tests
+  # Asset route JS tests.
 
   def test_asset_app_js
     get '/assets/app.js'
@@ -46,7 +46,7 @@ class AssetsTest < Minitest::Test
     refute_empty_response
   end
 
-  # asset route CSS tests
+  # Asset route CSS tests.
 
   def test_asset_app_css
     get '/assets/app.css'

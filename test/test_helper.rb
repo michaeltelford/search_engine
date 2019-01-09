@@ -7,17 +7,19 @@ require 'byebug'
 
 require_relative '../lib/search_engine'
 
-# require any additional test methods for all tests
+# Require any additional test methods for all tests.
 class Minitest::Test
   include Rack::Test::Methods
+
+  parallelize_me!
 end
 
-# required by rack-test
+# Required by rack-test.
 def app
   SearchEngine::App.new
 end
 
-# helper methods for all tests go below...
+# Helper methods for all tests go below...
 
 def status
   last_response.status

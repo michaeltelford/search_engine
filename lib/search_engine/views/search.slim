@@ -15,13 +15,13 @@ form#search.row
   - if not results.empty?
     #results
       - results.each_with_index do |result, i|
-        .row id="result_#{i + 1}"
+        .row id="result_#{i+1}"
           .col-md-12
-            a.title.h5 href="#{result.url}" #{result.title || "Untitled Webpage"}
-            - if not result.keywords.nil?
+            a.title.h5 href="#{result.url}" #{result.title}
+            - if result.keywords
               br
-              small.keywords #{result.keywords[0..4].join(", ")}
-            p.text #{result.text.first}
+              small.keywords #{result.keywords}
+            p.text #{result.text}
             small.url #{result.url}
             hr
   - else

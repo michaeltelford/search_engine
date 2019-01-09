@@ -1,5 +1,6 @@
+# Place any route or template helper funcs below...
+
 module SearchEngine
   module Helpers
-    # place any route and template handlers below...
   end
 end

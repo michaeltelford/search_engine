@@ -6,14 +6,14 @@ require 'search_engine/version'
 Gem::Specification.new do |spec|
   spec.name                 = "search_engine"
   spec.version              = SearchEngine::VERSION
-  spec.authors              = ["Michael Telford"]
-  spec.email                = ["michael.telford@live.com"]
+  spec.author               = "Michael Telford"
+  spec.email                = "michael.telford@live.com"
 
   spec.summary              = "Search engine front end"
   spec.description          = "Search engine front end which utilises the 'wgit' gem as it's back end."
   spec.homepage             = "https://github.com/michaeltelford/search_engine"
   spec.license              = "MIT"
-  spec.metadata["yard.run"] = "yri" # use "yard" to build full HTML docs.
+  spec.metadata["yard.run"] = "yri" # Use "yard" to build full HTML docs.
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.

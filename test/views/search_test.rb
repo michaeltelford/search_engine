@@ -1,6 +1,6 @@
-require 'nokogiri'
 require 'test_helper'
-require_relative '../factories/html_document'
+require 'factories/mock_search_result'
+require 'nokogiri'
 
 class SearchViewTest < Minitest::Test
   TEMPLATE       = "search"
@@ -41,8 +41,8 @@ class SearchViewTest < Minitest::Test
 
   def test_one_result
     q = "Everest"
-    mocks = Array.new 1, Document.new
 
+    mocks = Array.new 1, MockSearchResult.new
     doc = search_template q: q, results: mocks
     results = doc.css CSS_RESULTS
 
@@ -55,7 +55,7 @@ class SearchViewTest < Minitest::Test
     num_results = 3
     q = "Ama Dablam"
 
-    mocks = Array.new(num_results) { Document.new }
+    mocks = Array.new(num_results) { MockSearchResult.new }
     doc = search_template q: q, results: mocks
     results = doc.css CSS_RESULTS
 
@@ -81,8 +81,12 @@ private
 
   def assert_result(expected, actual)
     assert_equal expected.title, actual.css(".title").first.text
-    assert_equal expected.keywords, actual.css(".keywords").first.text.split(",").map(&:strip)
-    assert_equal expected.text.first, actual.css(".text").first.text
+    if actual.css(".keywords").first
+      assert_equal expected.keywords, actual.css(".keywords").first.text
+    else    
+      assert_nil expected.keywords
+    end
+    assert_equal expected.text, actual.css(".text").first.text
     assert_equal expected.url, actual.css(".url").first.text
   end
 end

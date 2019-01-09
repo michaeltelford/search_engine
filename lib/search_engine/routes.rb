@@ -1,7 +1,9 @@
-module SearchEngine
-  class App < Sinatra::Base
-    # place any routes below...
+# Place any routes/endpoints in this file.
 
+module SearchEngine
+  PAGING_SIZE = 10.freeze
+
+  class App < Sinatra::Base
     not_found do
       "Not found, sorry!"
     end
@@ -26,11 +28,11 @@ module SearchEngine
       if not q.empty?
         q.strip!
         
-        if settings.production?
-          results = settings.db.search(q, false, 10)
-          results.each { |doc| doc.search!(q) }
-        else # use mock data for test and dev
-          results = Array.new(10) { Document.new }
+        if settings.production? || settings.development?
+          results = settings.db.search(q, false, PAGING_SIZE)
+          results.map! { |doc| SearchResult.new(doc, q) }
+        else
+          results = Array.new(PAGING_SIZE) { MockSearchResult.new }
         end
       end
 

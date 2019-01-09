@@ -10,9 +10,11 @@ require 'coffee-script'
 require 'execjs'
 require 'wgit'
 require_relative 'helpers'
+require_relative 'search_result'
 
-# place any initialisation/configuration code in this file
-# the routes are required (loaded) at the bottom of this file
+# Place any initialisation/configuration code in this file. The routes are
+# required (loaded) at the bottom of this file once App init is complete.
+
 module SearchEngine
   class App < Sinatra::Base
     puts "Running in #{environment} mode."
@@ -23,19 +25,16 @@ module SearchEngine
       register Sinatra::Reloader
     end
 
-    configure :production do
-      Wgit.set_connection_details_from_env
-      set :db, Wgit::Database.new
-      puts "Connected to the database successfully."
-    end
-
     configure :development, :test do
       require 'byebug'
-      require_relative '../../test/factories/html_document'
+      require_relative '../../test/factories/mock_search_result'
     end
 
     configure :development, :production do
       enable :logging
+      Wgit.set_connection_details_from_env
+      set :db, Wgit::Database.new
+      puts "Connected to the database successfully."
     end
 
     configure :development, :production, :test do
