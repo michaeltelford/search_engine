@@ -7,6 +7,7 @@ module SearchEngine
     DEFAULT_TITLE   = "Untitled Webpage".freeze
     MAX_TEXT_LENGTH = 80.freeze
 
+    # Params: doc is a Wgit::Document and q is a String.
     def initialize(doc, q)
       @doc = doc
       @q = q

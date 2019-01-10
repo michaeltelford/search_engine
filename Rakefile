@@ -1,6 +1,6 @@
-require 'bundler/gem_tasks'
-require 'dotenv/tasks'
+# require 'bundler/gem_tasks'
 require 'rake/testtask'
+require 'dotenv/tasks'
 
 DEV_PORT          = 8080
 DEFAULT_PROD_PORT = 80
@@ -11,7 +11,22 @@ Rake::TestTask.new(:test) do |t|
   t.test_files = FileList['test/**/*_test.rb']
 end
 
-task :default => :test
+desc "Print help information"
+task default: :help
+
+desc "Print help information"
+task :help do
+  system "bundle exec rake -D"
+end
+
+desc "Compile all project Ruby files with warnings"
+task :compile do
+  paths = Dir["**/*.rb"]
+  paths.each do |f|
+    puts "\nCompiling #{f}..."
+    puts `ruby -cw #{f}`
+  end
+end
 
 desc "Start the application on port #{DEV_PORT}"
 task :serve do

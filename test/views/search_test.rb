@@ -83,7 +83,7 @@ private
     assert_equal expected.title, actual.css(".title").first.text
     if actual.css(".keywords").first
       assert_equal expected.keywords, actual.css(".keywords").first.text
-    else    
+    else
       assert_nil expected.keywords
     end
     assert_equal expected.text, actual.css(".text").first.text
