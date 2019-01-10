@@ -1,7 +1,7 @@
 .row
   .col-md-12
     p#title.h2 Search Engine
-  
+
 form#search.row
   .col-lg-12
     .input-group.input-group-md
@@ -17,12 +17,12 @@ form#search.row
       - results.each_with_index do |result, i|
         .row id="result_#{i+1}"
           .col-md-12
-            a.title.h5 href="#{result.url}" #{result.title}
+            a.title.h5 href="#{result.url}" = result.title
             - if result.keywords
               br
-              small.keywords #{result.keywords}
-            p.text #{result.text}
-            small.url #{result.url}
+              small.keywords == result.keywords
+            p.text == result.text
+            small.url = result.url
             hr
   - else
     p#no-results There are no search results, try changing your query.

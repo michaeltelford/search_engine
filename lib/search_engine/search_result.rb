@@ -25,22 +25,33 @@ module SearchEngine
     # @doc.keywords is nil.
     def keywords
       if @doc.keywords
-        @doc.keywords[0..(NUM_KEYWORDS-1)].join(", ")
+        keywords = @doc.keywords[0..(NUM_KEYWORDS-1)].join(", ")
+        embold(keywords)
       else
         nil
       end
     end
 
     # Returns a String of the web page's highest ranking text snippet from the
-    # query (@q).
+    # query (@q). Anything matching @q is set in bold.
     def text
-      @doc.text.first
-      # TODO: gsub @q for <b>@q</b>.
+      # .dup is required because the String is frozen.
+      embold(@doc.text.first.dup)
     end
 
     # Returns a String of the webpage's url.
     def url
       @doc.url
+    end
+
+  private
+
+    # Embolds instances of @q in s (String).
+    def embold(s)
+      regex = Regexp.new(@q, true) # Case insensitive.
+      match = regex.match(s)
+      s.gsub!(regex, "<b>#{match.to_s}</b>") if match
+      s
     end
   end
 end
