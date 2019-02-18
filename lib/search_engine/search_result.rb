@@ -13,7 +13,7 @@ module SearchEngine
       @q = q
       
       # Set @doc.text.first to be the highest ranking search result.
-      @doc.search!(@q) # TODO: Pass in MAX_TEXT_LENGTH when wgit bug is fixed.
+      @doc.search!(@q, MAX_TEXT_LENGTH)
     end
 
     # Returns a String representing the webpage's title.
