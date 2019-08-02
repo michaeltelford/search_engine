@@ -36,12 +36,12 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "rack-test"
   spec.add_development_dependency "faker"
-  spec.add_development_dependency "yard"
+  spec.add_development_dependency "yard", [">= 0.9.20", "< 1.0"]
   spec.add_development_dependency "pry"
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "nokogiri"
 
-  spec.add_runtime_dependency "bundler", "~> 1.14"
+  spec.add_runtime_dependency "bundler", "~> 2.0"
   spec.add_runtime_dependency "rake", "~> 10.0"
   spec.add_runtime_dependency "wgit"
   spec.add_runtime_dependency "dotenv"

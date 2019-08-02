@@ -18,7 +18,7 @@ class MockSearchResult
     @keywords = if randomise(3)
                   nil
                 else
-                  Faker::Lorem.unique.words(NUM_KEYWORDS).join(', ')
+                  Faker::Lorem.unique.words(number: NUM_KEYWORDS).join(', ')
                 end
     @text = Faker::Hacker.unique.say_something_smart[0..MAX_TEXT_LENGTH]
     @url = Faker::Internet.unique.url
