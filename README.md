@@ -15,6 +15,10 @@ Search engine front end site developed using Ruby, Sinatra (web framework), Thin
 
 See the `Gemfile` and `Gemfile.lock` files for gem versioning information.
 
+## Dependencies
+
+- A Javascript runtime e.g. [`node`](https://nodejs.org/en/)
+
 ## Usage
 
 Start the app in development mode and open it in a browser with:
