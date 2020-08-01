@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    search_engine (0.0.4)
+    search_engine (0.0.5)
       bundler (~> 2.0)
       coffee-script (~> 2.4)
       dotenv (~> 2.7)
