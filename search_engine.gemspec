@@ -42,10 +42,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "nokogiri"
 
   spec.add_runtime_dependency "bundler", "~> 2.0"
-  spec.add_runtime_dependency "rake", "~> 10.0"
+  spec.add_runtime_dependency "rake", [">= 12.3.3", "< 12.4"]
   spec.add_runtime_dependency "wgit", "~> 0.9.0"
   spec.add_runtime_dependency "dotenv", "~> 2.7"
-  spec.add_runtime_dependency "rack", "~> 2.0"
+  spec.add_runtime_dependency "rack", [">= 2.1.4", "< 2.2"]
   spec.add_runtime_dependency "rack-protection", "~> 2.0"
   spec.add_runtime_dependency "thin", "~> 1.7"
   spec.add_runtime_dependency "sinatra", "~> 2.0"
