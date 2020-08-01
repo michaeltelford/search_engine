@@ -27,9 +27,9 @@ module SearchEngine
 
       if not q.empty?
         q.strip!
-        
+
         if settings.production? || settings.development?
-          results = settings.db.search(q, false, PAGING_SIZE)
+          results = settings.db.search(q, limit: PAGING_SIZE)
           results.map! { |doc| SearchResult.new(doc, q) }
         else
           results = Array.new(PAGING_SIZE) { MockSearchResult.new }

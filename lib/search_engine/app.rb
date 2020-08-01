@@ -17,7 +17,7 @@ require_relative 'search_result'
 
 module SearchEngine
   class App < Sinatra::Base
-    puts "Running in #{environment} mode."
+    puts "Running in #{environment} mode"
     Dotenv.load
 
     configure :development do
@@ -32,9 +32,8 @@ module SearchEngine
 
     configure :development, :production do
       enable :logging
-      Wgit.set_connection_details_from_env
       set :db, Wgit::Database.new
-      puts "Connected to the database successfully."
+      puts "Connected to the database successfully"
     end
 
     configure :development, :production, :test do

@@ -11,9 +11,9 @@ module SearchEngine
     def initialize(doc, q)
       @doc = doc
       @q = q
-      
+
       # Set @doc.text.first to be the highest ranking search result.
-      @doc.search!(@q, MAX_TEXT_LENGTH)
+      @doc.search!(@q, sentence_limit: MAX_TEXT_LENGTH)
     end
 
     # Returns a String representing the webpage's title.
