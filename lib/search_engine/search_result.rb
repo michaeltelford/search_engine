@@ -50,7 +50,7 @@ module SearchEngine
     def embold(s)
       regex = Regexp.new(@q, true) # Case insensitive.
       match = regex.match(s)
-      s.gsub!(regex, "<b>#{match.to_s}</b>") if match
+      s.gsub!(regex, "<mark>#{match.to_s}</mark>") if match
       s
     end
   end
