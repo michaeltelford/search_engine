@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.author               = "Michael Telford"
   spec.email                = "michael.telford@live.com"
 
-  spec.summary              = "Search engine front end"
-  spec.description          = "Search engine front end which utilises the 'wgit' gem as it's back end."
+  spec.summary              = "Demo search engine web application."
+  spec.description          = "Demo search engine which utilises the 'wgit' gem as its back end."
   spec.homepage             = "https://github.com/michaeltelford/search_engine"
   spec.license              = "MIT"
   spec.metadata["yard.run"] = "yri" # Use "yard" to build full HTML docs.
@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = '~> 2.5' # Only works with ruby 2.5.x
+  spec.required_ruby_version = '~> 2.7' # Only works with ruby 3.0.x
 
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "rack-test"
@@ -43,7 +43,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "bundler", "~> 2.0"
   spec.add_runtime_dependency "rake", [">= 12.3.3", "< 12.4"]
-  spec.add_runtime_dependency "wgit", "~> 0.9.0"
+  spec.add_runtime_dependency "wgit", "~> 0.10"
   spec.add_runtime_dependency "dotenv", "~> 2.7"
   spec.add_runtime_dependency "rack", [">= 2.1.4", "< 2.2"]
   spec.add_runtime_dependency "rack-protection", "~> 2.0"
