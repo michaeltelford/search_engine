@@ -6,7 +6,7 @@ PATH
       coffee-script (~> 2.4)
       dotenv (~> 2.7)
       execjs (~> 2.7)
-      rack (>= 2.1.4, < 2.2)
+      rack (>= 2.1.4, < 2.3)
       rack-protection (~> 2.0)
       rake (>= 12.3.3, < 12.4)
       sass (~> 3.7)
@@ -66,7 +66,7 @@ GEM
       method_source (~> 1.0)
     public_suffix (4.0.6)
     racc (1.6.0)
-    rack (2.1.4)
+    rack (2.2.3.1)
     rack-protection (2.0.8.1)
       rack
     rack-test (1.1.0)
