@@ -19,7 +19,7 @@ class SearchViewTest < Minitest::Test
     assert_equal 0, results.size
     assert_q q, doc
     assert_equal(
-      "Enter a search query...",
+      "Enter a Ruby related search query...",
       doc.css(CSS_NO_SEARCH).text
     )
   end
@@ -34,7 +34,7 @@ class SearchViewTest < Minitest::Test
     assert_equal 0, results.size
     assert_q q, doc
     assert_equal(
-      "There are no search results, try changing your query.",
+      "There are no search results, try changing your query to something Ruby specific like \"Matz\".",
       doc.css(CSS_NO_RESULTS).text
     )
   end
