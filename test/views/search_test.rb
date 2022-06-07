@@ -3,11 +3,17 @@ require 'factories/mock_search_result'
 require 'nokogiri'
 
 class SearchViewTest < Minitest::Test
-  TEMPLATE       = "search"
-  CSS_QUERY      = "#q"
-  CSS_NO_SEARCH  = "#no-search"
-  CSS_NO_RESULTS = "#no-results"
-  CSS_RESULTS    = "#results > div.row"
+  TEMPLATE        = "search"
+  CSS_QUERY       = "#q"
+  CSS_NO_SEARCH   = "#no-search"
+  CSS_NO_RESULTS  = "#no-results"
+  CSS_RESULTS     = "#results > div.result"
+  CSS_HEADLINE    = ".headline"
+  CSS_KEYWORDS    = ".keywords"
+  CSS_MATCH       = ".match"
+  CSS_URL         = ".url"
+  TEXT_SEARCH     = "Enter a Ruby related search query..."
+  TEXT_NO_RESULTS = "There are no search results, try changing your query to something Ruby specific like \"Matz\"."
 
   def test_no_search
     q = ""
@@ -18,10 +24,7 @@ class SearchViewTest < Minitest::Test
 
     assert_equal 0, results.size
     assert_q q, doc
-    assert_equal(
-      "Enter a Ruby related search query...",
-      doc.css(CSS_NO_SEARCH).text
-    )
+    assert_equal TEXT_SEARCH, doc.css(CSS_NO_SEARCH).text
   end
 
   def test_no_results
@@ -33,10 +36,7 @@ class SearchViewTest < Minitest::Test
 
     assert_equal 0, results.size
     assert_q q, doc
-    assert_equal(
-      "There are no search results, try changing your query to something Ruby specific like \"Matz\".",
-      doc.css(CSS_NO_RESULTS).text
-    )
+    assert_equal TEXT_NO_RESULTS, doc.css(CSS_NO_RESULTS).text
   end
 
   def test_one_result
@@ -67,7 +67,7 @@ class SearchViewTest < Minitest::Test
 private
 
   # Sets up an env context to render the template with and returns a
-  # Nokogiri::Document object from the resulting HTML
+  # Nokogiri::Document object from the resulting HTML.
   def search_template(env_hash)
     env = OpenStruct.new env_hash
     html = render_template TEMPLATE, env
@@ -80,13 +80,13 @@ private
   end
 
   def assert_result(expected, actual)
-    assert_equal expected.title, actual.css(".title").first.text
-    if actual.css(".keywords").first
-      assert_equal expected.keywords, actual.css(".keywords").first.text
+    assert_equal expected.title, actual.css(CSS_HEADLINE).first.text
+    if actual.css(CSS_KEYWORDS).first
+      assert_equal expected.keywords, actual.css(CSS_KEYWORDS).first.text
     else
       assert_nil expected.keywords
     end
-    assert_equal expected.text, actual.css(".text").first.text
-    assert_equal expected.url, actual.css(".url").first.text
+    assert_equal expected.text, actual.css(CSS_MATCH).first.text
+    assert_equal expected.url, actual.css(CSS_URL).first.text
   end
 end

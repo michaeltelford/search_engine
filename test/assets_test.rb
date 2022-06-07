@@ -31,18 +31,8 @@ class AssetsTest < Minitest::Test
     refute_empty_response
   end
 
-  def test_asset_bootstrap_js
-    get '/assets/bootstrap.js'
-    refute_empty_response
-  end
-
-  def test_asset_jquery_js
-    get '/assets/jquery.js'
-    refute_empty_response
-  end
-
-  def test_asset_tether_js
-    get '/assets/tether.js'
+  def test_asset_font_awesome_js
+    get '/assets/font-awesome.js'
     refute_empty_response
   end
 
@@ -53,11 +43,6 @@ class AssetsTest < Minitest::Test
     refute_empty_response
   end
 
-  def test_asset_bootstrap_css
-    get '/assets/bootstrap.css'
-    refute_empty_response
-  end
-
   def test_asset_main_css
     get '/assets/main.css'
     assert last_response.ok?
@@ -65,6 +50,11 @@ class AssetsTest < Minitest::Test
 
   def test_asset_search_css
     get '/assets/search.css'
+    refute_empty_response
+  end
+  
+  def test_asset_footer_css
+    get '/assets/footer.css'
     refute_empty_response
   end
 end

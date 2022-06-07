@@ -5,7 +5,7 @@ module SearchEngine
   class SearchResult
     NUM_KEYWORDS    = 5.freeze
     DEFAULT_TITLE   = "Untitled Webpage".freeze
-    MAX_TEXT_LENGTH = 80.freeze
+    MAX_TEXT_LENGTH = 78.freeze
 
     # Params: doc is a Wgit::Document and q is a String.
     def initialize(doc, q)
@@ -24,19 +24,17 @@ module SearchEngine
     # Returns a String of the webpage's keywords joined by a comma or nil if
     # @doc.keywords is nil.
     def keywords
-      if @doc.keywords
-        keywords = @doc.keywords[0..(NUM_KEYWORDS-1)].join(", ")
-        embold(keywords)
-      else
-        nil
-      end
+      return nil unless @doc.keywords
+        
+      keywords = @doc.keywords[0..(NUM_KEYWORDS-1)].join(", ")
+      mark(keywords)
     end
 
     # Returns a String of the web page's highest ranking text snippet from the
     # query (@q). Anything matching @q is set in bold.
     def text
       # .dup is required because the String is frozen.
-      embold(@doc.text.first.dup)
+      mark(@doc.text.first.dup)
     end
 
     # Returns a String of the webpage's url.
@@ -46,8 +44,8 @@ module SearchEngine
 
   private
 
-    # Embolds instances of @q in s (String).
-    def embold(s)
+    # Adds a <mark> tag to instances of @q in s (String).
+    def mark(s)
       regex = Regexp.new(@q, true) # Case insensitive.
       match = regex.match(s)
       s.gsub!(regex, "<mark>#{match.to_s}</mark>") if match

@@ -17,12 +17,12 @@ module SearchEngine
       settings.sprockets.call(env)
     end
 
-    get '/' do
-      redirect to('/search')
+    get "/" do
+      redirect to("/search")
     end
 
-    get '/search' do
-      q = params['q'] || ""
+    get "/search" do
+      q = params["q"] || ""
       results = []
 
       if not q.empty?

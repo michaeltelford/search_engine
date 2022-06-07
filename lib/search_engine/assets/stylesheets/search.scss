@@ -1,26 +1,26 @@
-// Note: In future, if the search box is ever used on other pages then
-// this variable should be moved to main.scss and imported.
-$q-width: 30em;
-
-#title {
-  margin: {
-    top: 1em;
-    bottom: 0.8em;
+#search {
+  display: flex;
+  margin-bottom: 1.5em;
+  
+  #q {
+    width: 100%;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+  
+  #submit {
+    border-radius: 0;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
-#q {
-  max-width: $q-width;
+.match {
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
 }
 
-#no-search, #no-results, #results {
-  margin: {
-    top: 2em;
-  }
-}
-
-#results .text {
-  margin: {
-    bottom: 0em;
-  }
+.divider {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 }

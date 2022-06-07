@@ -1,29 +1,21 @@
-.row
-  .col-md-12
-    p#title.h2 Search Engine
-
-form#search.row
-  .col-lg-12
-    .input-group.input-group-md
-      label.sr-only for="q" Enter a search query
-      input#q.form-control.input-md type="text" name="q" value="#{q}"
-      span.input-group-btn
-        button#submit.btn.btn-primary.btn-md type="submit"
-          i class="fa fa-search fa-lg" aria-hidden="true"
+form#search
+  input#q type="text" name="q" value="#{q}"
+  button#submit type="submit"
+    i class="fa fa-search fa-lg" aria-hidden="true"
 
 - if not q.empty?
   - if not results.empty?
     #results
       - results.each_with_index do |result, i|
-        .row id="result_#{i+1}"
-          .col-md-12
-            a.title.h5 href="#{result.url}" = result.title
-            - if result.keywords
-              br
-              small.keywords == result.keywords
-            p.text == result.text
-            small.url = result.url
-            hr
+        div.result id="result_#{i+1}"
+          a.headline href="#{result.url}" = result.title
+          - if result.keywords
+            br
+            small.keywords == result.keywords
+          p.match == result.text
+          small.url = result.url
+          - if i != (results.size - 1)
+            hr.divider
   - else
     p#no-results There are no search results, try changing your query to something Ruby specific like "Matz".
 - else
