@@ -1,4 +1,5 @@
 ENV['RACK_ENV'] ||= 'test'
+$VERBOSE = nil # Turn off warnings.
 
 require 'minitest/autorun'
 require 'rack/test'

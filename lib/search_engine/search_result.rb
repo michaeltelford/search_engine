@@ -44,12 +44,12 @@ module SearchEngine
 
   private
 
-    # Adds a <mark> tag to instances of @q in s (String).
-    def mark(s)
+    # Adds a <mark> tag to instances of @q in str (String).
+    def mark(str)
       regex = Regexp.new(@q, true) # Case insensitive.
-      match = regex.match(s)
-      s.gsub!(regex, "<mark>#{match.to_s}</mark>") if match
-      s
+      match = regex.match(str)
+      str.gsub!(regex, "<mark>#{match.to_s}</mark>") if match
+      str
     end
   end
 end

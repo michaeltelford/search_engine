@@ -1,4 +1,4 @@
-require 'faker'
+require "faker"
 
 # Mock search result which uses faker instead of wgit to populate the title
 # etc. This way the tests aren't dependant on an external lib or database.
@@ -10,17 +10,14 @@ class MockSearchResult
   attr_reader :title, :keywords, :text, :url
 
   def initialize
-    @title =  if randomise(5)
-                DEFAULT_TITLE
-              else
-                Faker::Commerce.unique.product_name
-              end
+    @title =  randomise(5) ? DEFAULT_TITLE : Faker::Commerce.unique.product_name
     @keywords = if randomise(3)
                   nil
                 else
-                  Faker::Lorem.unique.words(number: NUM_KEYWORDS).join(', ')
+                  str = Faker::Lorem.unique.words(number: NUM_KEYWORDS).join(", ")
+                  mark(str, index: 1, delimiter: ", ")
                 end
-    @text = Faker::Hacker.unique.say_something_smart[0..MAX_TEXT_LENGTH]
+    @text = mark(Faker::Hacker.unique.say_something_smart[0..MAX_TEXT_LENGTH], index: -3)
     @url = Faker::Internet.unique.url
   end
 
@@ -30,5 +27,16 @@ private
   def randomise(n)
     arr = Array(1..n)
     arr.sample == arr[arr.length / 2]
+  end
+  
+  # Adds a <mark> tag to the nth (index) word in str.
+  # We don't mark test data because the test data comes from faker, so we don't know
+  # how to assert which word is being marked.
+  def mark(str, index:, delimiter: " ")
+    return str if ENV["RACK_ENV"] == "test"
+    
+    words = str.split(delimiter)
+    words[index] = "<mark>#{words[index]}</mark>"
+    words.join(delimiter)
   end
 end
