@@ -18,11 +18,14 @@ require_relative 'search_result'
 module SearchEngine
   class App < Sinatra::Base
     puts "Running in #{environment} mode"
+    
     Dotenv.load
 
     configure :development do
       require "sinatra/reloader"
       register Sinatra::Reloader
+      
+      puts "Set USE_MOCK_RESULTS=true for mock search results"
     end
 
     configure :development, :test do
@@ -33,7 +36,6 @@ module SearchEngine
     configure :development, :production do
       enable :logging
       set :db, Wgit::Database.new
-      puts "Connected to the database successfully"
     end
 
     configure :development, :production, :test do

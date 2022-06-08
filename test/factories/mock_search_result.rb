@@ -29,6 +29,6 @@ private
   # Has a one in n chance of returning true.
   def randomise(n)
     arr = Array(1..n)
-    return arr.sample == arr[arr.length / 2]
+    arr.sample == arr[arr.length / 2]
   end
 end

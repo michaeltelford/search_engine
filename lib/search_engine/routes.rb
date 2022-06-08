@@ -28,7 +28,7 @@ module SearchEngine
       if not q.empty?
         q.strip!
 
-        if settings.production? || settings.development?
+        if use_real_results?
           results = settings.db.search(q, limit: PAGING_SIZE)
           results.map! { |doc| SearchResult.new(doc, q) }
         else
@@ -41,6 +41,14 @@ module SearchEngine
         q: q,
         results: results,
       }
+    end
+    
+    private
+    
+    def use_real_results?
+      return false if ENV["USE_MOCK_RESULTS"]
+      
+      settings.production? || settings.development?
     end
   end
 end
