@@ -14,7 +14,10 @@ form#search
             small.keywords == result.keywords
           p.match == result.text
           small.url = result.url
-          - if i != (results.size - 1)
+          br
+          small
+            i.score == "Match ##{i + 1} score: #{result.score}"
+          - unless i == (results.size - 1)
             hr.divider
   - else
     p#no-results There are no search results, try changing your query to something Ruby specific like "Matz".

@@ -7,7 +7,7 @@ class MockSearchResult
   NUM_KEYWORDS = SearchEngine::SearchResult::NUM_KEYWORDS
   MAX_TEXT_LENGTH = SearchEngine::SearchResult::MAX_TEXT_LENGTH
 
-  attr_reader :title, :keywords, :text, :url
+  attr_reader :title, :keywords, :text, :url, :score
 
   def initialize
     @title =  randomise(5) ? DEFAULT_TITLE : Faker::Commerce.unique.product_name
@@ -19,6 +19,7 @@ class MockSearchResult
                 end
     @text = mark(Faker::Hacker.unique.say_something_smart[0..MAX_TEXT_LENGTH], index: -3)
     @url = Faker::Internet.unique.url
+    @score = rand(0.2...27.9).round(2)
   end
 
 private

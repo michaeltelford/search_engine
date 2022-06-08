@@ -41,10 +41,15 @@ module SearchEngine
     def url
       @doc.url
     end
+    
+    def score
+      float = @doc.score || 0.0
+      float.round(2)
+    end
 
   private
 
-    # Adds a <mark> tag to instances of @q in str (String).
+    # Adds a <mark> tag to instances of @q in str.
     def mark(str)
       regex = Regexp.new(@q, true) # Case insensitive.
       match = regex.match(str)
