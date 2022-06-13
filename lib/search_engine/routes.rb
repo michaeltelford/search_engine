@@ -24,15 +24,18 @@ module SearchEngine
     get "/search" do
       q = params["q"] || ""
       results = []
+      total_results = 0
 
       if not q.empty?
         q.strip!
 
         if use_real_results?
           results = settings.db.search(q, limit: PAGING_SIZE)
+          total_results = settings.db.last_result.count
           results.map! { |doc| SearchResult.new(doc, q) }
         else
           results = Array.new(PAGING_SIZE) { MockSearchResult.new }
+          total_results = PAGING_SIZE
         end
       end
 
@@ -40,6 +43,7 @@ module SearchEngine
         development: settings.development?,
         q: q,
         results: results,
+        total_results: total_results,
       }
     end
     

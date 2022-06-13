@@ -19,7 +19,7 @@ class MockSearchResult
                 end
     @text = mark(Faker::Hacker.unique.say_something_smart[0..MAX_TEXT_LENGTH], index: -3)
     @url = Faker::Internet.unique.url
-    @score = rand(0.2...27.9).round(2)
+    @score = rand(0.1...1.8).round(2)
   end
 
 private

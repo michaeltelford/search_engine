@@ -3,9 +3,11 @@ form#search
   button#submit type="submit"
     i class="fa fa-search fa-lg" aria-hidden="true"
 
-- if not q.empty?
-  - if not results.empty?
+- unless q.empty?
+  - unless results.empty?
     #results
+      #summary
+        small == "Showing results 1-#{results.size} of #{total_results}"
       - results.each_with_index do |result, i|
         div.result id="result_#{i+1}"
           a.headline href="#{result.url}" = result.title

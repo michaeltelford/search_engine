@@ -115,7 +115,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    wgit (0.10.4)
+    wgit (0.10.5)
       addressable (~> 2.6)
       ferrum (~> 0.8)
       mongo (~> 2.9)

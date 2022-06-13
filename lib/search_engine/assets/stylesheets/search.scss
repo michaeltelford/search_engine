@@ -1,6 +1,5 @@
 #search {
   display: flex;
-  margin-bottom: 1.5em;
   
   #q {
     width: 100%;
@@ -12,6 +11,12 @@
     border-radius: 0;
     margin-top: 0;
     margin-bottom: 0;
+  }
+}
+
+#results {
+  #summary {
+    margin-bottom: 1.3em;
   }
 }
 
