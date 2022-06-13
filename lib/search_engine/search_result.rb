@@ -5,7 +5,7 @@ module SearchEngine
   class SearchResult
     NUM_KEYWORDS    = 5.freeze
     DEFAULT_TITLE   = "Untitled Webpage".freeze
-    MAX_TEXT_LENGTH = 78.freeze
+    MAX_TEXT_LENGTH = 74.freeze
 
     # Params: doc is a Wgit::Document and q is a String.
     def initialize(doc, q)

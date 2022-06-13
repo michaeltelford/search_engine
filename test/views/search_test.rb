@@ -7,7 +7,7 @@ class SearchViewTest < Minitest::Test
   CSS_QUERY       = "#q"
   CSS_NO_SEARCH   = "#no-search"
   CSS_NO_RESULTS  = "#no-results"
-  CSS_RESULTS     = "#results > div.result"
+  CSS_RESULTS     = "#results > article.result"
   CSS_HEADLINE    = ".headline"
   CSS_KEYWORDS    = ".keywords"
   CSS_MATCH       = ".match"

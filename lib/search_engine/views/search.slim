@@ -9,7 +9,7 @@ form#search
       #summary
         small == "Showing results 1-#{results.size} of #{total_results}"
       - results.each_with_index do |result, i|
-        div.result id="result_#{i+1}"
+        article.result id="result_#{i+1}"
           a.headline href="#{result.url}" = result.title
           - if result.keywords
             br
@@ -19,8 +19,6 @@ form#search
           br
           small
             i.score == "Match ##{i + 1} score: #{result.score}"
-          - unless i == (results.size - 1)
-            hr.divider
   - else
     p#no-results There are no search results, try changing your query to something Ruby specific like "Matz".
 - else
