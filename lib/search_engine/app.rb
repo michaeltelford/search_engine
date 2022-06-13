@@ -9,6 +9,7 @@ require 'sass'
 require 'coffee-script'
 require 'execjs'
 require 'wgit'
+require 'benchmark'
 require_relative 'helpers'
 require_relative 'search_result'
 

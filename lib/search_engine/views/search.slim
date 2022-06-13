@@ -7,7 +7,7 @@ form#search
   - unless results.empty?
     #results
       #summary
-        small == "Showing results 1-#{results.size} of #{total_results}"
+        small == "Showing results 1-#{results.size} of #{total_results} (#{duration} seconds)"
       - results.each_with_index do |result, i|
         article.result id="result_#{i+1}"
           a.headline href="#{result.url}" = result.title

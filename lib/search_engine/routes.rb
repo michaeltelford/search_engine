@@ -26,17 +26,14 @@ module SearchEngine
       results = []
       total_results = 0
 
-      if not q.empty?
+      unless q.empty?
         q.strip!
 
-        if use_real_results?
-          results = settings.db.search(q, limit: PAGING_SIZE)
-          total_results = settings.db.last_result.count
-          results.map! { |doc| SearchResult.new(doc, q) }
-        else
-          results = Array.new(PAGING_SIZE) { MockSearchResult.new }
-          total_results = PAGING_SIZE
-        end
+        results, total_results, duration = if use_real_results?
+                                             get_real_results(q)
+                                           else
+                                             get_mock_results
+                                           end
       end
 
       slim :search, layout: true, locals: {
@@ -44,15 +41,40 @@ module SearchEngine
         q: q,
         results: results,
         total_results: total_results,
+        duration: duration,
       }
     end
-    
+
     private
-    
+
     def use_real_results?
       return false if ENV["USE_MOCK_RESULTS"]
       
       settings.production? || settings.development?
+    end
+
+    def get_real_results(q)
+      results = []
+      duration = benchmark do
+        results = settings.db.search(q, limit: PAGING_SIZE)
+      end
+      total_results = settings.db.last_result.count
+      results.map! { |doc| SearchResult.new(doc, q) }
+
+      [results, total_results, duration]
+    end
+
+    def get_mock_results
+      results = Array.new(PAGING_SIZE) { MockSearchResult.new }
+      total_results = PAGING_SIZE
+      duration = 0.12
+
+      [results, total_results, duration]
+    end
+
+    def benchmark(&block)
+      measurements = Benchmark.measure &block
+      measurements.real&.round(2) || 0.0
     end
   end
 end
