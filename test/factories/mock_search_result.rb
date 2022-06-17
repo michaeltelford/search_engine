@@ -18,7 +18,7 @@ class MockSearchResult
                   mark(str, index: 1, delimiter: ", ")
                 end
     @text = mark(Faker::Hacker.unique.say_something_smart[0..MAX_TEXT_LENGTH], index: -3)
-    @url = Faker::Internet.unique.url
+    @url = Wgit::Url.new("https://example.com")
     @score = rand(0.1...1.8).round(2)
   end
 
