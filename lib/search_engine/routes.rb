@@ -27,8 +27,7 @@ module SearchEngine
 
     get "/search" do
       q = params["q"] || ""
-      results = []
-      total_results = 0
+      results, total_results, duration = init_results
 
       unless q.empty?
         q.strip!
@@ -50,6 +49,14 @@ module SearchEngine
     end
 
     private
+
+    def init_results
+      results = []
+      total_results = 0
+      duration = 0.0
+
+      [results, total_results, duration]
+    end
 
     def use_real_results?
       return false if ENV["USE_MOCK_RESULTS"]
@@ -74,11 +81,6 @@ module SearchEngine
       duration = 0.12
 
       [results, total_results, duration]
-    end
-
-    def benchmark(&block)
-      measurements = Benchmark.measure &block
-      measurements.real&.round(2) || 0.0
     end
   end
 end

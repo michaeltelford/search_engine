@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class HelpersTest < Minitest::Test
-#   def test_a_helper_method
-#     pass
-#   end
+  include SearchEngine::Helpers
+
+  def test_benchmark
+    duration = benchmark { sleep 0.2 }
+    assert duration > 0.1
+  end
 end
