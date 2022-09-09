@@ -11,6 +11,10 @@ module SearchEngine
     error do
       "An error has occurred."
     end
+    
+    get "/health" do
+        200
+    end
 
     get "/assets/*" do
       env["PATH_INFO"].sub!("/assets", "")

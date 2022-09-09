@@ -7,6 +7,11 @@ class RoutesTest < Minitest::Test
     assert_equal "Not found, sorry!", body
   end
 
+  def test_health
+    get '/health'
+    assert_equal 200, status
+  end
+
   def test_index
     get '/'
     assert_equal 302, status
