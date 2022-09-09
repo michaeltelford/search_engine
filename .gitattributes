@@ -1,2 +1,1 @@
-lib/search_engine/assets/javascripts/*.js linguist-vendored
-lib/search_engine/assets/stylesheets/bootstrap.css linguist-vendored
+lib/search_engine/assets/javascripts/font-awesome.js linguist-vendored

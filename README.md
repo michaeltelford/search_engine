@@ -8,10 +8,8 @@ Search engine front end site developed using Ruby, Sinatra (web framework), Thin
 
 ### Assets
 
-- `jquery`
-- `tether`
-- `bootstrap`
-- `font-awesome`
+- `simplecss`       -> Styling
+- `font-awesome`    -> Icons
 
 See the `Gemfile` and `Gemfile.lock` files for gem versioning information.
 
@@ -24,6 +22,7 @@ See the `Gemfile` and `Gemfile.lock` files for gem versioning information.
 Start the app in development mode and open it in a browser with:
 
     $ bundle exec rake browse
+    $ bundle exec rake serve # To manually open the URL yourself
 
 See all the available rake tasks with:
 
@@ -35,7 +34,11 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 Run `bundle exec ./bin/console` for an interactive prompt that will allow you to experiment or you can call `byebug` anywhere in the code or tests to debug.
 
-Github is used as the main code repository. Heroku is used to deploy the app. Any code pushed to Heroku gets deployed so best to wait for a release rather than pushing every little change. Also, test the Heroku deploy post push.
+Github is used as the main code repository. Render is used to deploy the app. Any code pushed to the `master` branch gets deployed automatically; so best to wait for a release rather than pushing every little change. Also, test the production deploy post push on:
+
+```
+https://wgit-search-engine.onrender.com/
+```
 
 ## Contributing
 
