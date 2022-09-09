@@ -42,13 +42,13 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "nokogiri"
 
   spec.add_runtime_dependency "bundler", "~> 2.0"
-  spec.add_runtime_dependency "rake", [">= 12.3.3", "< 12.4"]
+  spec.add_runtime_dependency "rake", "~> 13.0"
   spec.add_runtime_dependency "wgit", "~> 0.10"
   spec.add_runtime_dependency "dotenv", "~> 2.7"
-  spec.add_runtime_dependency "rack", [">= 2.1.4", "< 2.2"]
+  spec.add_runtime_dependency "rack", "~> 2.0"
   spec.add_runtime_dependency "rack-protection", "~> 2.0"
   spec.add_runtime_dependency "thin", "~> 1.7"
-  spec.add_runtime_dependency "sinatra", "~> 2.0"
+  spec.add_runtime_dependency "sinatra", "~> 2.2"
   spec.add_runtime_dependency "sinatra-contrib", "~> 2.0"
   spec.add_runtime_dependency "slim", "~> 4.0"
   spec.add_runtime_dependency "sprockets", "~> 3.7"
@@ -56,5 +56,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "uglifier", "~> 4.1"
   spec.add_runtime_dependency "execjs", "~> 2.7"
   spec.add_runtime_dependency "coffee-script", "~> 2.4"
-  spec.add_runtime_dependency "sass", "~>3.7"
+  spec.add_runtime_dependency "sass", "~> 3.7"
 end
