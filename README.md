@@ -45,7 +45,7 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 Run `bundle exec ./bin/console` for an interactive prompt that will allow you to experiment or you can call `byebug` anywhere in the code or tests to debug.
 
-Github is used as the main code repository. Fly.io is used to deploy the demo app (URL above). To deploy, run `flyctl launch` inside the root of the repo (once authenticated).
+Github is used as the main code repository. Fly.io is used to deploy the demo app (URL above). To deploy, run `flyctl deploy` inside the root of the repo (once authenticated).
 
 ## Contributing
 
