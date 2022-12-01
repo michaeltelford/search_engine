@@ -48,7 +48,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "rack", "~> 2.0"
   spec.add_runtime_dependency "rack-protection", "~> 2.0"
   spec.add_runtime_dependency "thin", "~> 1.7"
-  spec.add_runtime_dependency "sinatra", "~> 2.2"
+  spec.add_runtime_dependency "sinatra", ">= 2.2", "< 4.0"
   spec.add_runtime_dependency "sinatra-contrib", "~> 2.0"
   spec.add_runtime_dependency "slim", "~> 4.0"
   spec.add_runtime_dependency "sprockets", "~> 3.7"
