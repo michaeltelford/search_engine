@@ -1,6 +1,17 @@
 # Search Engine
 
-Search engine front end site developed using Ruby, Sinatra (web framework), Thin (templating engine) and the '[wgit](https://github.com/michaeltelford/wgit)' gem (search engine logic).
+Search engine UI developed using:
+
+- Ruby
+- [wgit](https://github.com/michaeltelford/wgit) (search engine logic)
+- Sinatra (web framework)
+- Thin (templating engine)
+
+Check out the demo search engine here:
+
+```
+https://wgit-search-engine.fly.dev
+```
 
 ## Versioning
 
@@ -34,11 +45,7 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 Run `bundle exec ./bin/console` for an interactive prompt that will allow you to experiment or you can call `byebug` anywhere in the code or tests to debug.
 
-Github is used as the main code repository. Render is used to deploy the app. Any code pushed to the `master` branch gets deployed automatically; so best to wait for a release rather than pushing every little change. Also, test the production deploy post push on:
-
-```
-https://wgit-search-engine.onrender.com/
-```
+Github is used as the main code repository. Fly.io is used to deploy the demo app (URL above). To deploy, run `flyctl launch` inside the root of the repo (once authenticated).
 
 ## Contributing
 
