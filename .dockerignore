@@ -4,7 +4,9 @@ _yardoc
 coverage
 doc
 pkg
+test
 spec/reports
+bin
 tmp
 **/.byebug_history
 **/**/spike.rb
