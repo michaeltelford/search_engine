@@ -11,9 +11,13 @@ module SearchEngine
     error do
       "An error has occurred."
     end
-    
+
     get "/health" do
-        200
+      redirect to("/healthcheck")
+    end
+
+    get "/healthcheck" do
+      200
     end
 
     get "/assets/*" do
@@ -60,7 +64,7 @@ module SearchEngine
 
     def use_real_results?
       return false if ENV["USE_MOCK_RESULTS"]
-      
+
       settings.production? || settings.development?
     end
 
@@ -78,7 +82,7 @@ module SearchEngine
     def get_mock_results
       results = Array.new(PAGING_SIZE) { MockSearchResult.new }
       total_results = PAGING_SIZE
-      duration = 0.12
+      duration = [0.12, 0.25, 0.21, 0.19].sample
 
       [results, total_results, duration]
     end
