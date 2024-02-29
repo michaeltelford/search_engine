@@ -15,7 +15,7 @@ https://wgit-search-engine.fly.dev
 
 ## Versioning
 
-- `ruby-3.0.6`
+- `ruby-3.3.0`
 
 ### Assets
 
