@@ -26,7 +26,7 @@ module SearchEngine
     def keywords
       return nil unless @doc.keywords
 
-      keywords = @doc.keywords[0..(NUM_KEYWORDS-1)].join(", ")
+      keywords = @doc.keywords[0...NUM_KEYWORDS].join(", ")
       mark(keywords)
     end
 
@@ -39,7 +39,13 @@ module SearchEngine
 
     # Returns a String of the webpage's url.
     def url
-      @doc.url
+      fragment = nearest_fragment
+
+      if fragment
+        @doc.url.join(fragment)
+      else
+        @doc.url
+      end
     end
 
     def score
@@ -47,7 +53,7 @@ module SearchEngine
       float.round(2)
     end
 
-  private
+    private
 
     # Adds a <mark> tag to instances of @q in str.
     def mark(str)
@@ -55,6 +61,12 @@ module SearchEngine
       match = regex.match(str)
       str.gsub!(regex, "<mark>#{match.to_s}</mark>") if match
       str
+    end
+
+    def nearest_fragment
+      @doc.nearest_fragment(@q) # , &:last
+    rescue
+      nil
     end
   end
 end
