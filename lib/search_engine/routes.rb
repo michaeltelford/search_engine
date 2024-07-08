@@ -13,10 +13,6 @@ module SearchEngine
     end
 
     get "/health" do
-      redirect to("/healthcheck")
-    end
-
-    get "/healthcheck" do
       200
     end
 

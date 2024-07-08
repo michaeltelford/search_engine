@@ -13,7 +13,7 @@ module SearchEngine
       @q = q
 
       # Set @doc.text.first to be the highest ranking search result.
-      @doc.search!(@q, sentence_limit: MAX_TEXT_LENGTH)
+      @doc.search_text!(@q, sentence_limit: MAX_TEXT_LENGTH)
     end
 
     # Returns a String representing the webpage's title.
@@ -25,7 +25,7 @@ module SearchEngine
     # @doc.keywords is nil.
     def keywords
       return nil unless @doc.keywords
-        
+
       keywords = @doc.keywords[0..(NUM_KEYWORDS-1)].join(", ")
       mark(keywords)
     end
@@ -41,7 +41,7 @@ module SearchEngine
     def url
       @doc.url
     end
-    
+
     def score
       float = @doc.score || 0.0
       float.round(2)
