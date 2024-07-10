@@ -47,3 +47,11 @@ end
 
 desc "Start app and open in browser"
 task :browse => [:open, :serve]
+
+desc "Index webpages for the production Wgit demo search engine app"
+task :index_webpages do
+  puts "Enter the production MongoDB connection string:"
+  connection_str = STDIN.gets.strip # Blocks for user input
+
+  system "WGIT_CONNECTION_STRING=\"#{connection_str}\" ./index_webpages.rb"
+end
